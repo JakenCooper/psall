@@ -1,0 +1,14 @@
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jaken.psall.dao.UserDao">
+	<select id="selectAll" resultType="com.jaken.psall.entity.User">
+		select id as id,
+		name as name,
+		age as age from t_user
+	</select>
+	<insert id="addUser">
+		insert into t_user(name,age) values (#{name},#{age})
+	</insert>
+</mapper>
