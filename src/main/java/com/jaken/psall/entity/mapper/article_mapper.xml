@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jaken.psall.dao.ArticleDaoMy">
+
+	<resultMap id="BaseResultMap" type="com.jaken.psall.entity.Article">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="title" jdbcType="VARCHAR" property="title" />
+		<result column="is_star" jdbcType="CHAR" property="isStarMy" />
+		<result column="category_id" jdbcType="VARCHAR" property="categoryId" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="content" jdbcType="LONGVARCHAR" property="content" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, title, is_star, category_id, create_time, user_id,content 
+	</sql>
+</mapper>

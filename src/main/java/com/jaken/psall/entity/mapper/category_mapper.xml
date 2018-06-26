@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jaken.psall.dao.CategoryDaoMy">
+
+	<resultMap id="BaseResultMap" type="com.jaken.psall.entity.Category">
+		<id column="id" jdbcType="VARCHAR" property="id" />
+		<result column="name" jdbcType="VARCHAR" property="name" />
+		<result column="user_id" jdbcType="VARCHAR" property="userId" />
+		<result column="p_category_id" jdbcType="VARCHAR" property="pCategoryId" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, name, user_id, p_category_id
+	</sql>
+	
+	<resultMap id="assoResultMap" type="com.jaken.psall.entity.Category" extends="BaseResultMap">
+		<association property="user" fetchType="lazy" select="com.jaken.psall.dao.UserDaoMy.mybatisGetUserId"
+			column="user_id">
+		</association>
+	</resultMap>
+	
+	<select id="getCategory" resultMap="assoResultMap" parameterType="java.lang.String">
+		select <include refid="Base_Column_List"/>
+		from t_category where id=#{_parameter}
+	</select>
+	
+	<select id="getCategoriesByUserId" resultMap="BaseResultMap">
+		select <include refid="Base_Column_List"/>
+		from t_category where user_id=#{_parameter}
+	</select>
+</mapper>
